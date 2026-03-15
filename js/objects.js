@@ -87,13 +87,13 @@ export async function createEnvelope() {
 
 /**
  * Crée le mesh de la carte d'invitation
- * viewBox de carte_front.svg : 419.53 × 595.28
+ * Version raster pour homogénéité de rendu mobile
  */
 export async function createCard() {
   const vbW = 419.53;
   const vbH = 595.28;
   const texture = await loadSVGTexture(
-    'files/carte_front.svg',
+    'files/Carte.jpg',
     vbW,
     vbH,
     2048
