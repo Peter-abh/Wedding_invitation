@@ -434,6 +434,15 @@ body {
   z-index: 1;
 }
 
+.timeline-icon img {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  max-width: 70%;
+  max-height: 70%;
+  object-fit: contain;
+}
+
 .timeline-content h3 {
   font-family: var(--font-serif);
   font-size: 1.5rem;
@@ -733,6 +742,8 @@ body {
   .timeline { padding-left: 2.5rem; }
   .timeline::before { left: 0.85rem; }
   .timeline-icon { left: -2.5rem; width: 2rem; height: 2rem; font-size: 0.85rem; }
+  .timeline-icon img { width: 1.05rem; height: 1.05rem; max-width: 68%; max-height: 68%; }
+  
 
   .scroll-indicator { font-size: 0.9rem; }
 }
@@ -774,6 +785,7 @@ body {
   .footer-names { font-size: 2rem; }
   .timeline-content h3 { font-size: 1.3rem; }
   .timeline-content p, .timeline-content .time { font-size: 0.9rem; }
+  .timeline-icon img { width: 0.95rem; height: 0.95rem; max-width: 66%; max-height: 66%; }
   .btn-submit { font-size: 1.05rem; padding: 0.9rem; }
 }
 
