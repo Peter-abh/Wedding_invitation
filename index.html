@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vous êtes cordialement invités à célébrer notre mariage" />
+  <title>Invitation au Mariage</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- GSAP for smooth animations -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Three.js import map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ======== LOADER ======== -->
+  <!-- <div id="loader" aria-label="Chargement en cours">
+    <div class="loader-content">
+      <div class="loader-ring"></div>
+      <p class="loader-text">Préparation de votre invitation…</p>
+    </div>
+  </div> -->
+
+  <!-- ======== HERO (Three.js) ======== -->
+  <section id="hero" aria-label="Scène d'invitation 3D">
+    <canvas id="scene"></canvas>
+    <div id="hero-overlay">
+
+      <!-- Carte invitation HTML révélée après ouverture -->
+      <div id="hero-invitation-card" aria-hidden="true">
+        <img src="files/carte_front.svg" alt="Carte d'invitation" />
+      </div>
+
+      <!-- Zone gauche : photo des mariés -->
+      <div id="hero-summary-left" aria-hidden="true">
+        <a href="#couple" aria-label="Aller à la section couple"></a>
+          <img id="summary-photo" class="summary-item" src="files/photo.png" alt="Les mariés" />
+        </a>
+      </div>
+
+      <!-- Zone droite : cartes détails + RSVP -->
+      <div id="hero-summary-right" aria-label="Sommaire visuel">
+        <a id="summary-details" class="summary-item summary-link" href="#programme" aria-label="Aller à la section détails">
+          <img src="files/details.jpg" alt="Détails" />
+        </a>
+        <a id="summary-rsvp" class="summary-item summary-link" href="#rsvp" aria-label="Aller à la section RSVP">
+          <img src="files/rsvp.jpg" alt="RSVP" />
+        </a>
+      </div>
+
+      <!-- Ligne du bas : scroll indicator -->
+      <div id="hero-footer">
+        <div class="scroll-indicator" id="scrollIndicator">
+          <span>Découvrir la suite</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======== COUPLE ======== -->
+  <section id="couple" class="content-section">
+    <div id="couple-photo">
+      <img id="photo" class="photo-item" src="files/photo.png" alt="Les mariés">
+    </div>
+    <div class="section-inner">
+      <p class="section-subtitle reveal">Nous avons le plaisir de vous annoncer</p>
+      <h1 class="couple-names reveal">
+        <span class="name">Aloisio</span>
+        <span class="ampersand">&amp;</span>
+        <span class="name">Nadège</span>
+      </h1>
+      <div class="ornament reveal">&#10087;</div>
+      <p class="wedding-date reveal">Samedi 20 Juin 2026</p>
+      <p class="wedding-tagline reveal">Nous serions honorés de votre présence pour célébrer notre union</p>
+    </div>
+  </section>
+
+  <!-- ======== Séparateur ======== -->
+  <div class="section-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,30 Q300,0 600,30 T1200,30 L1200,60 L0,60 Z" fill="var(--sage-lightest)"/>
+    </svg>
+  </div>
+
+  <!-- ======== PROGRAMME ======== -->
+  <section id="programme" class="content-section section-alt">
+    <div class="section-inner">
+      <h2 class="section-title reveal">Programme de la journée</h2>
+      <div class="ornament reveal">&#10087;</div>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-icon"><img src="files/eglise3.png" alt="Cérémonie"/></div>
+          <div class="timeline-content">
+            <h3>Cérémonie</h3>
+            <p class="time">16h00</p>
+            <a href="https://maps.app.goo.gl/WornKgsNWzm3v2NQA" style="text-decoration: none;">
+            <p>Paroisse de Sainte Rita<br/>Cotonou-Bénin</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-icon"><img src="files/cloche2.png" alt="Reception"/></div>
+          <div class="timeline-content">
+            <h3>Reception</h3>
+            <p class="time">18h00</p>
+            <a href="https://maps.app.goo.gl/7LEU1FxGiMABXBgm8" style="text-decoration: none;">
+            <p>Domaine de la Belle Étoile<br/>Route des Vignes, 77000 Melun</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-icon"><img src="files/cocktail2.png" alt="soirée dansante"/></div>
+          <div class="timeline-content">
+            <h3>Soirée dansante</h3>
+            <p class="time">20h00</p>
+            <p>Que la fête commence !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== Séparateur ======== -->
+  <div class="section-divider flip">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,30 Q300,0 600,30 T1200,30 L1200,60 L0,60 Z" fill="var(--cream)"/>
+    </svg>
+  </div>
+
+  <!-- ======== RSVP ======== -->
+  <section id="rsvp" class="content-section">
+    <div class="section-inner">
+      <h2 class="section-title reveal">Confirmez votre présence</h2>
+      <div class="ornament reveal">&#10087;</div>
+      <p class="rsvp-subtitle reveal">Merci de répondre avant le <strong>20 Mai 2026</strong></p>
+
+      <form id="rsvpForm" class="rsvp-form" action="#" method="POST" data-sheetdb-url="https://sheetdb.io/api/v1/u69brhpkwtkiu">
+        <div class="form-group reveal">
+          <label for="fullName">Nom complet</label>
+          <input type="text" id="fullName" name="fullName" required placeholder="Votre nom et prénom" />
+        </div>
+
+        <div class="form-group reveal">
+          <label for="email">Adresse e-mail</label>
+          <input type="email" id="email" name="email" required placeholder="votre@email.com" />
+        </div>
+
+        <div class="form-group reveal">
+          <label for="attendance">Présence</label>
+          <select id="attendance" name="attendance">
+            <option value="yes">Avec plaisir !</option>
+            <option value="no">Malheureusement non</option>
+          </select>
+        </div>
+
+        <div class="form-group reveal">
+          <label for="message">Un petit mot (optionnel)</label>
+          <textarea id="message" name="message" rows="4" placeholder="Votre message pour les mariés…"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit reveal">
+          <span>Envoyer ma réponse</span>
+        </button>
+
+        <p id="rsvpError" class="rsvp-error" style="display: none;" role="alert"></p>
+      </form>
+
+      <div id="rsvpSuccess" class="rsvp-success" style="display: none;">
+        <div class="success-icon">&#10003;</div>
+        <h3>Merci beaucoup !</h3>
+        <p>Votre réponse a bien été enregistrée.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="footer-inner">
+      <p class="footer-quote">"Le plus beau voyage est celui qu'on fait à deux."</p>
+      <div class="footer-names">A &amp; N</div>
+      <p class="footer-date">20 · 06 · 2026</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
