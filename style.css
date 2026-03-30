@@ -285,7 +285,7 @@ body {
 
 /* ── CONTENT SECTIONS ── */
 .content-section {
-  padding: 5rem 1.5rem;
+  padding: 3rem 1.5rem 1rem 1.5rem;
   background-color: var(--cream);
 }
 
@@ -629,6 +629,26 @@ body {
 .rsvp-success p {
   color: var(--text-light);
   font-size: 1.05rem;
+}
+
+/* ── GIFTS Section (subtil) ── */
+#gifts {
+  padding: 2rem 1.5rem;
+  background-color: var(--cream);
+}
+
+.gifts-subtle {
+  background: transparent;
+}
+
+.gifts-message {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--gold-dark);
+  font-style: italic;
+  opacity: 0.65;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
 }
 
 /* ── FOOTER ── */
